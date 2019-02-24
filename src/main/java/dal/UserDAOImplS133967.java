@@ -22,12 +22,12 @@ public class UserDAOImplS133967 implements IUserDAO {
         String sql = "SELECT user.id AS id, user.name AS name, user.ini AS ini" +
                 " FROM user" +
                 " WHERE user.id = ?";
-        querryUserWithoutRoles(sql, user, userId);
+        queryUserWithoutRoles(sql, user, userId);
 
         sql = "SELECT role_user.user_role AS role" +
                 " FROM role_user" +
                 " WHERE role_user.user_id = ?";
-        querryUserRoles(sql, user);
+        queryUserRoles(sql, user);
         return user;
     }
 
@@ -170,7 +170,7 @@ public class UserDAOImplS133967 implements IUserDAO {
         return params;
     }
 
-    private UserDTO querryUserRoles(String sql, UserDTO userDTO) throws DALException {
+    private UserDTO queryUserRoles(String sql, UserDTO userDTO) throws DALException {
         Connection conn = createConnection();
         PreparedStatement pstmt = null;
         try{
@@ -203,7 +203,7 @@ public class UserDAOImplS133967 implements IUserDAO {
         }
         return userDTO;
     }
-    private UserDTO querryUserWithoutRoles(String sql, UserDTO userDTO, int userId) throws DALException {
+    private UserDTO queryUserWithoutRoles(String sql, UserDTO userDTO, int userId) throws DALException {
         Connection conn = createConnection();
         PreparedStatement pstmt = null;
         try{
